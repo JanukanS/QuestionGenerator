@@ -57,14 +57,26 @@ function letterswapNum(){
   for(var i = 0;i < numLetters;i++){
     var indice = Math.floor(Math.random()*letterChoice.length)
     letterList[i] = letterChoice[indice]
-    duplicates[indice] += 1x
+    duplicates[indice] += 1
   }
   console.log(duplicates)
 }
 
+changeQuestion()
+function changeQuestion() {
+    qTest.genContent();
+    document.getElementById("qText").innerHTML = qTest.question;
+}
+function verifyAnswer(){
+  userAnswer = document.getElementById("qAnswer").value
+  if(userAnswer == qTest.answer){
+    alert('True')
+  }
+  else{
+    alert('False')
+  }
+}
 
 var qTest = new questionObj(genAddNum,genAddQ)
 qTest.genContent()
-console.log(qTest.question)
-console.log(qTest.answer)
-letterswapNum()
+changeQuestion()
