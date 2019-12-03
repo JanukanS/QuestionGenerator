@@ -183,7 +183,7 @@ function question_mc23(){
   var b = Math.floor(Math.random()*3+3) 
   var a = Math.floor(Math.random()*(6)+ b)
   var ans = 0
-  for (i=3;i <= b; i++){
+  for (var i=3;i <= b; i++){
     ans += fact(a)/(fact(a-i)*fact(i))
   }
 
@@ -196,30 +196,7 @@ function question_mc23(){
   return [qString,answerString];
 }
 
-function question_mc23(){
-  var fact = function(n) {
-  if (n === 0) {
-    return 1;
-  } else {
-    return n * (arguments.callee(n - 1));
-  }
-  }
 
-  var b = Math.floor(Math.random()*3+3) 
-  var a = Math.floor(Math.random()*(6)+ b)
-  var ans = 0
-  for (i=3;i <= b; i++){
-    ans += fact(a)/(fact(a-i)*fact(i))
-  }
-
-  var qString1 = "A circle is drawn with " + a + " points on it circumference. ";
-  var qString2 = "A polygon can be created by connecting at least three of the points."
-  var qString3 = "How many polygons can be created with no more than " + b + " sides."
-  var qString = qString1 + qString2 + qString3;
-  var answerString = "" + ans;
-
-  return [qString,answerString];
-}
 
 function question_mc11(){
   var a = Math.floor(Math.random()*5+1) * (Math.random() > 0.5 ? 1 : -1)
@@ -312,18 +289,77 @@ function question_mc2(){
   return [questionString,answerString]
 }
 
-function question_mc1(){
-  var a_val = Math.floor((Math.random()*10)+1);
-  var b_val = Math.floor((Math.random()*10)+1);
-  var c_val = Math.floor((Math.random()*10)+1);
-  var d_val = Math.floor((Math.random()*10)+1);
-  var questionStringA = "The point P(" + a_val + ", " + b_val + ") is on the graph of y = b^x, where b>1."
-  var questionStringB = " What is the corresponding point, P', on the graph of y + " + c_val + "=b^(x + " + d_val +  ")?";
-  var questionStringC = " Provide your answer in the form x',y' "
-  var answer = "" + (a_val - d_val) + "," + (b_val - c_val)
-  var questionString = questionStringA + questionStringB + questionStringC;
-  var answerString = "" + answer
-  return [questionString,answerString]
+function select_from_array(array){
+    
+    var i = Math.floor(Math.random() * array.length);
+    
+    return array[i];
+    
 }
 
-var questionDirectory = [question_mc11,question_mc21,question_mc23,question_nr5,question_nr8,question_nr3,question_mc19, question_mc15, question_mc5,question_mc1,question_mc8,question_mc7,question_mc4,question_mc2,question_mc1]
+function question_21() {
+    
+    var trig_functions = ['csc(x)','sec(x)', 'tan(x)', 'cot(x)']
+    
+    var first_trig_function = select_from_array(trig_functions);
+    
+    var second_trig_function = select_from_array(trig_functions);
+            
+    var second_trig_function = select_from_array(trig_functions);
+
+    var third_trig_function = select_from_array(trig_functions);
+    
+    while (third_trig_function == first_trig_function == second_trig_function) {
+    
+        third_trig_function = select_from_array(trig_functions);
+    
+    }
+    
+    var trig_array = [first_trig_function, second_trig_function, third_trig_function];
+    
+    var question = "The non-permissible values of x for the identity " + first_trig_function + second_trig_function + "=" + third_trig_function + " are:";
+    
+    var answer = question_21_answer(trig_array);
+    
+    return [question, answer];
+    
+}
+
+function question_21_answer(trig_array) {
+    
+    
+    var sin_den = false;
+    
+    var cos_den = false;
+    
+    var answer;
+
+    if (trig_array.includes('csc(x)') || trig_array.includes('cot(x)')) {
+        
+        sin_den = true;
+    }
+    
+    if (trig_array.includes('sec(x)') || trig_array.includes('tan(x)')) {
+        
+        cos_den = true;
+    }
+    
+    if (sin_den && cos_den) {
+        
+        answer = "n*(π/2), n ∈ I";
+    
+    } else if (sin_den) {
+        
+        answer = "(π/2) + nπ, n ∈ I";
+        
+    } else {
+        
+        answer = "nπ, n ∈ I";
+    }
+    
+    return answer;
+}
+
+
+var questionDirectory = [question_mc11,question_mc23,question_nr5,question_nr8,question_nr3,question_mc19, question_mc15, question_mc5,question_mc1,question_mc8,question_mc7,question_mc4,question_mc2,question_mc1]
+module.exports.qDir = questionDirectory;
