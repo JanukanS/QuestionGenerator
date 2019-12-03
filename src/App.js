@@ -60,7 +60,7 @@ class NameForm extends React.Component {
       document.getElementById(this.props.idAnswer).innerHTML = "Correct";
     }
     else{
-      document.getElementById(this.props.idAnswer).innerHTML = "False";
+      document.getElementById(this.props.idAnswer).innerHTML = "False, should be: " + this.state.a_string;
     }
   }
 
