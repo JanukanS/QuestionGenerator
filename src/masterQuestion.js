@@ -361,5 +361,5 @@ function question_21_answer(trig_array) {
 }
 
 
-var questionDirectory = [question_mc11,question_mc23,question_nr5,question_nr8,question_nr3,question_mc19, question_mc15, question_mc5,question_mc1,question_mc8,question_mc7,question_mc4,question_mc2,question_mc1]
+var questionDirectory = [question_mc11,question_mc23,question_nr5,question_nr8,question_nr3,question_mc19, question_mc15, question_mc5,question_mc8,question_mc7,question_mc4,question_mc2,question_mc1]
 module.exports.qDir = questionDirectory;
