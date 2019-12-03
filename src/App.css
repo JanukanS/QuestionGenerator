@@ -8,6 +8,45 @@
   pointer-events: none;
 }
 
+button {
+  font-size: 30px;
+  padding: 3px 3px;
+  cursor: pointer;
+  background-color: #081B33;
+  font-family: 'Roboto';
+  font-weight: 100;  transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+}
+#rButton {
+  color: #00caf1;
+  border: 3px solid #00cafd
+}
+#sButton {
+  color: #00cc33;
+  border: 3px solid #00cc33
+}
+#answerBox {
+  height: 38px;
+  background-color:#081B33;
+  border:3px solid#fffff0;
+  color: #fffff0;
+}
+#rButton:hover {
+  background-color: #0000d0;
+  }
+#sButton:hover {
+  background-color: #00a000;
+}
+
+input{
+  font-size:30px
+}
+#answerBar{
+  margin: 0 auto;
+  text-align: center;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -18,14 +57,20 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.questionBox {
+  padding: 10px 10px
+}
 
 .App-link {
   color: #61dafb;
 }
 .question {
   border-style: solid;
-  border-width: 5px;
-  font-size: 30px;
+  border-width: 0px 5px 5px 5px;
+  font-size: 20px;
+  background-color:#081B33;
+  border-color:#ff6768;
+  color:#fffff0;
 }
 @keyframes App-logo-spin {
   from {

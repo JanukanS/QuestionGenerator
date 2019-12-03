@@ -127,7 +127,6 @@ function question_mc5(){
 
   var questionString = questionStringA + questionStringB + questionStringC;
   var answerString = "" + invar_points;
-  alert(det + "," + invar_points)
   return [questionString,answerString]
 }
 

@@ -40,7 +40,7 @@ class NameForm extends React.Component {
     this.state = {q_string:this.props.qtext,a_string:this.props.answer,value:""};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.randomize = this.randomize.bind(this)
+    this.randomize = this.randomize.bind(this);
 
   }
 
@@ -51,6 +51,7 @@ class NameForm extends React.Component {
   randomize(event) {
     [this.state.q_string,this.state.a_string] = this.props.q_function();
     document.getElementById("q" + this.props.idAnswer).innerHTML = this.state.q_string;
+    document.getElementById(this.props.idAnswer).innerHTML = "";
   }
 
   handleSubmit(event) {
@@ -66,16 +67,18 @@ class NameForm extends React.Component {
   render() {
     return (
       <div class = "question">
-          <div id = {"q" + this.props.idAnswer}>
+          <div id = {"q" + this.props.idAnswer} class = "questionBox">
           {this.props.qtext}
           </div>
           
           <br />
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-          <br />
-        <button onClick={this.handleSubmit.bind(this)}>Submit</button>
-        <button onClick={this.randomize.bind(this)}>Randomize</button>
-        <p id = {this.props.idAnswer}>insertAnswer</p>
+          <div id = "answerBar">
+          <button id = "rButton" onClick={this.randomize.bind(this)}>Randomize</button>
+          <input id = "answerBox" type="text" value={this.state.value} onChange={this.handleChange} />
+          <button id = "sButton" onClick={this.handleSubmit.bind(this)}>Submit</button>
+          <br/>
+          <p id = {this.props.idAnswer}></p>
+          </div>
       </div>
     );
   }
