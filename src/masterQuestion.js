@@ -110,23 +110,24 @@ function question_mc5(){
   var b_val = Math.floor((Math.random()*10)+1);
   var c_val = Math.floor((Math.random()*10));
   var det = b_val*b_val - 4*a_val*c_val;
-  var invar_points = 0;
+  
   if(det > 0){
-    invar_points = 2;
+    var invar_points = 2;
   }
   else if(det < 0){
-    invar_points = 0;
+    var invar_points = 0;
   }
   else{
-    invar_points = 1;
+    var invar_points = 1;
   }
 
   var questionStringA = "The number of points that would be invariant when the graph of y = ";
   var questionStringB = a_val + "x^2 + " + b_val+1 + "x + " + c_val;
-  var questionStringC = "is reflected in the line y = x is:";
+  var questionStringC = " is reflected in the line y = x is:";
 
   var questionString = questionStringA + questionStringB + questionStringC;
   var answerString = "" + invar_points;
+  alert(det + "," + invar_points)
   return [questionString,answerString]
 }
 

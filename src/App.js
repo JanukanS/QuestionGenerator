@@ -37,18 +37,25 @@ console.log(outVals[1]);
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: ''};
-    this.answerText = ''
+    this.state = {q_string:this.props.qtext,a_string:this.props.answer,value:""};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.randomize = this.randomize.bind(this)
+
   }
 
   handleChange(event) {
     this.setState({value: event.target.value});
   }
 
+  randomize(event) {
+    [this.state.q_string,this.state.a_string] = this.props.q_function();
+    document.getElementById("q" + this.props.idAnswer).innerHTML = this.state.q_string;
+  }
+
   handleSubmit(event) {
-    if(this.state.value === this.props.answer){
+    this.setState({value: event.target.value});
+    if(this.state.value === this.state.a_string){
       document.getElementById(this.props.idAnswer).innerHTML = "Correct";
     }
     else{
@@ -58,17 +65,18 @@ class NameForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} class = "question">
-        <label>
+      <div class = "question">
+          <div id = {"q" + this.props.idAnswer}>
           {this.props.qtext}
+          </div>
+          
           <br />
           <input type="text" value={this.state.value} onChange={this.handleChange} />
           <br />
-          {this.props.answerText}
-        </label>
-        <input type="submit" value="Submit" />
+        <button onClick={this.handleSubmit.bind(this)}>Submit</button>
+        <button onClick={this.randomize.bind(this)}>Randomize</button>
         <p id = {this.props.idAnswer}>insertAnswer</p>
-      </form>
+      </div>
     );
   }
 }
@@ -85,7 +93,7 @@ function quiz10(){
     chosen_values.push(chosen_val);
     var func_chosen = qDir[chosen_val];
     var textValues = func_chosen()
-    questionList.push(<NameForm qtext={textValues[0]} answer = {textValues[1]} idAnswer = {"q"+ i}/>);
+    questionList.push(<NameForm qtext={textValues[0]} answer = {textValues[1]} idAnswer = {"q"+ i} q_function = {func_chosen}/>);
   }
   return questionList;
 }
