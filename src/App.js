@@ -88,7 +88,7 @@ function quiz10(){
   var chosen_val = 0
   var chosen_values = []
   var questionList = []
-  for(var i = 0;i < 5;i++){
+  for(var i = 0;i < 9;i++){
     chosen_val = Math.floor(Math.random()*qDir.length)
     while(chosen_values.includes(chosen_val)){
       chosen_val = Math.floor(Math.random()*qDir.length)
